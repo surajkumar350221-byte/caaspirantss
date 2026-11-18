@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduPro - Complete Coaching & Learning Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f1f5f9; }
+    :root { --primary: #2563eb; --primary-light: #eff6ff; --primary-dark: #1d4ed8; }
+    .bg-theme { background-color: var(--primary); }
+    .bg-theme-dark { background-color: var(--primary-dark); }
+    .bg-theme-light { background-color: var(--primary-light); }
+    .text-theme { color: var(--primary); }
+    .border-theme { border-color: var(--primary); }
+    .hide-scroll::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="text-slate-800 pb-24 select-none">
+
+  <!-- Top App Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 px-4 py-3 shadow-sm">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-theme text-white flex items-center justify-center font-extrabold text-lg shadow-md">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div>
+          <h1 class="text-base font-extrabold text-slate-900 leading-tight" id="app-title">Sankalp Academy</h1>
+          <p class="text-[11px] text-slate-500 font-medium" id="app-tagline">Learn • Practice • Succeed</p>
+        </div>
+      </div>
+
+      <!-- Theme Switcher Dots & Admin Button -->
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:flex items-center gap-1.5 bg-slate-100 px-2.5 py-1.5 rounded-full border border-slate-200" title="Change App Theme">
+          <button onclick="setTheme('#2563eb','#eff6ff','#1d4ed8')" class="w-4 h-4 rounded-full bg-blue-600 border border-white shadow"></button>
+          <button onclick="setTheme('#059669','#ecfdf5','#047857')" class="w-4 h-4 rounded-full bg-emerald-600 border border-white shadow"></button>
+          <button onclick="setTheme('#7c3aed','#f5f3ff','#6d28d9')" class="w-4 h-4 rounded-full bg-violet-600 border border-white shadow"></button>
+          <button onclick="setTheme('#e11d48','#fff1f2','#be123c')" class="w-4 h-4 rounded-full bg-rose-600 border border-white shadow"></button>
+        </div>
+        <button onclick="openPage('admin')" class="text-xs font-bold bg-theme-light text-theme border border-theme/20 px-3 py-1.5 rounded-xl hover:opacity-90 transition">
+          <i class="fa-solid fa-sliders mr-1"></i> Admin
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-4xl mx-auto px-4 pt-4">
+
+    <!-- PAGE 1: HOME -->
+    <section id="page-home" class="app-page space-y-5">
+      <!-- Mobile Theme Bar -->
+      <div class="flex sm:hidden items-center justify-between bg-white px-3 py-2 rounded-xl border border-slate-200 text-xs">
+        <span class="font-bold text-slate-600"><i class="fa-solid fa-palette text-theme mr-1"></i> App Theme:</span>
+        <div class="flex gap-2">
+          <button onclick="setTheme('#2563eb','#eff6ff','#1d4ed8')" class="w-5 h-5 rounded-full bg-blue-600"></button>
+          <button onclick="setTheme('#059669','#ecfdf5','#047857')" class="w-5 h-5 rounded-full bg-emerald-600"></button>
+          <button onclick="setTheme('#7c3aed','#f5f3ff','#6d28d9')" class="w-5 h-5 rounded-full bg-violet-600"></button>
+          <button onclick="setTheme('#e11d48','#fff1f2','#be123c')" class="w-5 h-5 rounded-full bg-rose-600"></button>
+        </div>
+      </div>
+
+      <!-- Hero Banner -->
+      <div class="bg-theme rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+        <div class="relative z-10 max-w-md">
+          <span class="text-[10px] uppercase tracking-wider bg-white/20 px-2.5 py-1 rounded-full font-bold">Admissions Open 2026-27</span>
+          <h2 class="text-xl md:text-2xl font-extrabold mt-2">Complete Foundation & Target Batch</h2>
+          <p class="text-xs text-white/85 mt-1 leading-relaxed">Daily Live Classes, Handwritten PDF Notes, DPP Solutions & All India CBT Mock Tests.</p>
+          <div class="mt-4 flex gap-2">
+            <button onclick="openPage('store')" class="bg-white text-slate-900 text-xs font-extrabold px-4 py-2.5 rounded-xl shadow hover:bg-slate-100 transition">
+              Explore Batches
+            </button>
+            <button onclick="openPage('tests')" class="bg-black/25 text-white border border-white/30 text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-black/35 transition">
+              Free Mock Test
+            </button>
+          </div>
+        </div>
+        <i class="fa-solid fa-book-open-reader text-8xl text-white/10 absolute -right-3 -bottom-3"></i>
+      </div>
+
+      <!-- Quick Action Grid (Classplus Style) -->
+      <div class="grid grid-cols-4 gap-2.5 text-center">
+        <button onclick="openPage('batches')" class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm hover:border-theme transition">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg mb-1.5"><i class="fa-solid fa-video"></i></div>
+          <span class="text-[11px] font-bold text-slate-700 block">My Classes</span>
+        </button>
+        <button onclick="openPage('tests')" class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm hover:border-theme transition">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg mb-1.5"><i class="fa-solid fa-file-pen"></i></div>
+          <span class="text-[11px] font-bold text-slate-700 block">Test Series</span>
+        </button>
+        <button onclick="openPage('batches')" class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm hover:border-theme transition">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg mb-1.5"><i class="fa-solid fa-file-pdf"></i></div>
+          <span class="text-[11px] font-bold text-slate-700 block">Free PDFs</span>
+        </button>
+        <button onclick="openPage('chats')" class="bg-white p-3 rounded-2xl border border-slate-200/80 shadow-sm hover:border-theme transition">
+          <div class="w-10 h-10 mx-auto rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg mb-1.5"><i class="fa-solid fa-comments"></i></div>
+          <span class="text-[11px] font-bold text-slate-700 block">Doubt Chat</span>
+        </button>
+      </div>
+
+      <!-- Free Study Material Section -->
+      <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-sm font-extrabold text-slate-900">Free Demo Lectures & Notes</h3>
+          <button onclick="openPage('batches')" class="text-xs font-bold text-theme">View All</button>
+        </div>
+        <div id="home-demo-list" class="space-y-2.5"></div>
+      </div>
+    </section>
+<!-- PAGE 2: STORE (COURSES) -->
+    <section id="page-store" class="app-page hidden space-y-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-lg font-extrabold text-slate-900">Course Store</h2>
+          <p class="text-xs text-slate-500">Enroll in complete structured batches</p>
+        </div>
+        <span class="text-xs font-bold bg-theme-light text-theme px-3 py-1 rounded-full">2026-27 Batches</span>
+      </div>
+      <div id="store-courses-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    </section>
+
+    <!-- PAGE 3: MY BATCHES (CLASSROOM) -->
+    <section id="page-batches" class="app-page hidden space-y-4">
+      <div class="bg-white p-4 rounded-2xl border border-slate-200 flex items-center justify-between">
+        <div>
+          <h2 class="text-base font-extrabold text-slate-900">My Classroom</h2>
+          <p class="text-xs text-slate-500">Video Lectures & Study Material</p>
+        </div>
+        <div class="flex gap-1.5 bg-slate-100 p-1 rounded-xl text-xs font-bold">
+          <button onclick="filterClassroom('all')" id="cls-all" class="px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-sm">All</button>
+          <button onclick="filterClassroom('video')" id="cls-video" class="px-3 py-1.5 rounded-lg text-slate-500">Videos</button>
+          <button onclick="filterClassroom('pdf')" id="cls-pdf" class="px-3 py-1.5 rounded-lg text-slate-500">PDFs</button>
+        </div>
+      </div>
+
+      <!-- Embedded Video Player Box -->
+      <div id="video-player-box" class="hidden bg-slate-900 rounded-2xl overflow-hidden shadow-xl border border-slate-800">
+        <div class="flex items-center justify-between px-4 py-2.5 bg-slate-950 text-white text-xs">
+          <span class="font-bold truncate" id="player-title">Playing Lecture...</span>
+          <button onclick="closePlayer()" class="text-rose-400 hover:text-rose-300 font-bold"><i class="fa-solid fa-xmark mr-1"></i> Close</button>
+        </div>
+        <div class="aspect-video w-full bg-black flex items-center justify-center">
+          <iframe id="youtube-frame" class="w-full h-full" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div id="classroom-content-list" class="space-y-3"></div>
+    </section>
+
+    <!-- PAGE 4: TESTS (CBT MOCK TEST ENGINE) -->
+    <section id="page-tests" class="app-page hidden space-y-4">
+      <!-- Test Lobby -->
+      <div id="test-lobby" class="space-y-4">
+        <div>
+          <h2 class="text-lg font-extrabold text-slate-900">Online Test Series (CBT)</h2>
+          <p class="text-xs text-slate-500">Real exam interface with timer & negative marking</p>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="text-[10px] font-extrabold uppercase bg-emerald-50 text-emerald-600 border border-emerald-200 px-2.5 py-0.5 rounded-full">Live Free Test</span>
+            <h3 class="text-base font-extrabold text-slate-900 mt-1.5">All India Foundation Mock Test - 01</h3>
+            <p class="text-xs text-slate-500 mt-1"><i class="fa-regular fa-clock mr-1"></i> 10 Mins • 5 Questions • +4 / -1 Marking</p>
+          </div>
+          <button onclick="startMockTest()" class="bg-theme hover:bg-theme-dark text-white text-xs font-extrabold px-5 py-3 rounded-xl shadow transition shrink-0">
+            Attempt Now <i class="fa-solid fa-play ml-1"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Exam Screen -->
+      <div id="test-arena" class="hidden bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
+        <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between">
+          <span class="text-xs font-bold">Mock Test - 01</span>
+          <span class="text-xs font-mono font-extrabold bg-rose-500/20 text-rose-300 border border-rose-500/40 px-3 py-1 rounded-lg" id="exam-timer">10:00</span>
+        </div>
+        <div class="p-5">
+          <div class="text-xs font-bold text-theme mb-1" id="q-number">Question 1 of 5</div>
+          <p class="text-sm font-bold text-slate-900 mb-4" id="q-text">Loading question...</p>
+          <div id="q-options" class="space-y-2.5"></div>
+        </div>
+        <div class="bg-slate-50 px-5 py-3 border-t border-slate-200 flex items-center justify-between">
+          <button onclick="prevQuestion()" class="px-4 py-2 rounded-xl bg-white border border-slate-300 text-xs font-bold text-slate-700">Previous</button>
+          <button onclick="nextQuestion()" id="next-q-btn" class="px-5 py-2 rounded-xl bg-theme text-white text-xs font-bold">Save & Next</button>
+          <button onclick="submitMockTest()" class="px-4 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold">Submit Test</button>
+        </div>
+      </div>
+
+      <!-- Scorecard Result -->
+      <div id="test-result" class="hidden bg-white rounded-2xl border border-slate-200 p-6 text-center shadow-lg">
+        <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl mx-auto mb-3"><i class="fa-solid fa-trophy"></i></div>
+        <h3 class="text-lg font-extrabold text-slate-900">Test Submitted Successfully!</h3>
+        <p class="text-xs text-slate-500 mt-1">Your Instant Performance Report</p>
+        <div class="grid grid-cols-3 gap-3 my-5">
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <div class="text-[10px] font-bold text-slate-400 uppercase">Total Score</div>
+            <div class="text-xl font-black text-theme mt-0.5" id="res-score">0 / 20</div>
+          </div>
+          <div class="bg-emerald-50/60 p-3 rounded-xl border border-emerald-200">
+            <div class="text-[10px] font-bold text-emerald-600 uppercase">Correct</div>
+            <div class="text-xl font-black text-emerald-700 mt-0.5" id="res-correct">0</div>
+          </div>
+          <div class="bg-rose-50/60 p-3 rounded-xl border border-rose-200">
+            <div class="text-[10px] font-bold text-rose-600 uppercase">Wrong</div>
+            <div class="text-xl font-black text-rose-700 mt-0.5" id="res-wrong">0</div>
+          </div>
+        </div>
+        <button onclick="resetTestLobby()" class="bg-slate-900 text-white text-xs font-bold px-5 py-2.5 rounded-xl">Back to Test Series</button>
+      </div>
+    </section>
+<!-- PAGE 5: CHATS (DOUBT GROUP) -->
+    <section id="page-chats" class="app-page hidden">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-[70vh]">
+        <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-theme flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-users"></i></div>
+            <div>
+              <h3 class="text-xs font-extrabold">Target 2027 Batch Doubt Group</h3>
+              <p class="text-[10px] text-emerald-400">● 142 Students Online</p>
+            </div>
+          </div>
+          <span class="text-[10px] bg-white/10 px-2 py-0.5 rounded">Official</span>
+        </div>
+
+        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50 text-xs">
+          <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 max-w-[80%] shadow-sm">
+            <span class="text-[10px] font-extrabold text-theme block mb-0.5">Admin Teacher</span>
+            Welcome Students! Aaj shaam 7:00 PM par Physics ki Live Class hogi. Sabhi apne doubts yahan pooch sakte hain.
+          </div>
+        </div>
+
+        <div class="p-3 bg-white border-t border-slate-200 flex gap-2">
+          <input type="text" id="chat-input" placeholder="Type your doubt here..." class="flex-1 bg-slate-100 rounded-xl px-3.5 py-2.5 text-xs focus:outline-none">
+          <button onclick="sendChat()" class="bg-theme text-white px-4 py-2.5 rounded-xl text-xs font-bold"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 6: TEACHER ADMIN PANEL -->
+    <section id="page-admin" class="app-page hidden space-y-5">
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <h2 class="text-base font-extrabold text-slate-900 border-b border-slate-100 pb-2"><i class="fa-solid fa-building-columns text-theme mr-1.5"></i> Institute Branding</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="text-[11px] font-bold text-slate-500 block mb-1">Coaching / App Name</label>
+            <input type="text" id="admin-inst-name" value="Sankalp Academy" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold">
+          </div>
+          <div>
+            <label class="text-[11px] font-bold text-slate-500 block mb-1">Tagline</label>
+            <input type="text" id="admin-inst-tag" value="Learn • Practice • Succeed" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold">
+          </div>
+        </div>
+        <button onclick="updateBranding()" class="bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl">Save Branding</button>
+      </div>
+
+      <!-- Publish New Course -->
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+        <h2 class="text-base font-extrabold text-slate-900 border-b border-slate-100 pb-2"><i class="fa-solid fa-plus-circle text-theme mr-1.5"></i> Add New Course to Store</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <input type="text" id="new-course-title" placeholder="Batch Name (e.g., Crash Course)" class="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
+          <input type="text" id="new-course-price" placeholder="Price (e.g., ₹999 or FREE)" class="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
+          <input type="text" id="new-course-tag" placeholder="Tag (e.g., Live + PDF)" class="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
+        </div>
+        <button onclick="adminAddCourse()" class="bg-theme text-white text-xs font-bold px-4 py-2.5 rounded-xl">Publish Batch</button>
+      </div>
+
+      <!-- Publish New Video / PDF -->
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+        <h2 class="text-base font-extrabold text-slate-900 border-b border-slate-100 pb-2"><i class="fa-solid fa-cloud-arrow-up text-theme mr-1.5"></i> Upload Video Lecture / PDF</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <input type="text" id="new-mat-title" placeholder="Lecture / Notes Title" class="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
+          <select id="new-mat-type" class="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
+            <option value="video">Video Lecture (YouTube)</option>
+            <option value="pdf">PDF Study Notes</option>
+          </select>
+          <input type="text" id="new-mat-link" placeholder="YouTube Video ID or URL" class="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs">
+        </div>
+        <button onclick="adminAddMaterial()" class="bg-emerald-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl">Publish to Classroom</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom App Navigation Bar (Classplus Style) -->
+  <nav class="fixed bottom-0 inset-x-0 bg-white border-t border-slate-200 z-40 shadow-lg">
+    <div class="max-w-4xl mx-auto grid grid-cols-5 text-center py-2 text-[11px] font-semibold text-slate-500">
+      <button onclick="openPage('home')" id="nav-home" class="nav-btn text-theme font-extrabold flex flex-col items-center gap-1">
+        <i class="fa-solid fa-house text-base"></i><span>Home</span>
+      </button>
+      <button onclick="openPage('batches')" id="nav-batches" class="nav-btn flex flex-col items-center gap-1">
+        <i class="fa-solid fa-layer-group text-base"></i><span>Batches</span>
+      </button>
+      <button onclick="openPage('store')" id="nav-store" class="nav-btn flex flex-col items-center gap-1">
+        <i class="fa-solid fa-store text-base"></i><span>Store</span>
+      </button>
+      <button onclick="openPage('tests')" id="nav-tests" class="nav-btn flex flex-col items-center gap-1">
+        <i class="fa-solid fa-clipboard-check text-base"></i><span>Tests</span>
+      </button>
+      <button onclick="openPage('chats')" id="nav-chats" class="nav-btn flex flex-col items-center gap-1">
+        <i class="fa-solid fa-comment-dots text-base"></i><span>Chats</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Course Checkout Modal -->
+  <div id="enroll-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center">
+      <div class="w-12 h-12 rounded-2xl bg-theme-light text-theme flex items-center justify-center text-xl mx-auto mb-3"><i class="fa-solid fa-shield-check"></i></div>
+      <h3 class="text-base font-extrabold text-slate-900" id="modal-course-name">Batch Enrollment</h3>
+      <p class="text-xs text-slate-500 mt-1">Instant access to all Live Classes, PDFs & Test Series</p>
+      <div class="my-4 bg-slate-50 p-3 rounded-xl border border-slate-200 flex items-center justify-between text-xs font-bold">
+        <span>Payable Amount:</span>
+        <span class="text-base font-black text-theme" id="modal-course-price">₹0</span>
+      </div>
+      <div class="flex gap-2">
+        <button onclick="closeEnrollModal()" class="flex-1 py-2.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-bold">Cancel</button>
+        <button onclick="confirmEnrollment()" class="flex-1 py-2.5 rounded-xl bg-theme text-white text-xs font-extrabold shadow">Confirm & Unlock</button>
+      </div>
+    </div>
+  </div>
+<!-- Application JavaScript Engine -->
+  <script>
+    // Default Data (Stored in Browser LocalStorage)
+    let appData = JSON.parse(localStorage.getItem('edupro_data')) || {
+      name: "Sankalp Academy",
+      tagline: "Learn • Practice • Succeed",
+      courses: [
+        { id: 1, title: "Target 2027 Complete Foundation Batch", price: "₹1,499", tag: "Live + Recorded + PDFs", enrolled: true },
+        { id: 2, title: "All India Ranker Mock Test Series (25 Tests)", price: "₹499", tag: "CBT Exam Pattern", enrolled: false },
+        { id: 3, title: "Crash Course & Formula Revision Batch", price: "FREE", tag: "Free For All Students", enrolled: true }
+      ],
+      materials: [
+        { id: 101, title: "Lecture 01: Complete Strategy & Syllabus Breakdown", type: "video", link: "dQw4w9WgXcQ" },
+        { id: 102, title: "Chapter 01: Handwritten Formula & Short Notes PDF", type: "pdf", link: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
+        { id: 103, title: "Lecture 02: Important PYQs & Concept Marathon", type: "video", link: "M7lc1UVf-VE" }
+      ]
+    };
+
+    const mockQuestions = [
+      { q: "SI unit of Force kya hoti hai?", opts: ["Joule", "Newton", "Watt", "Pascal"], ans: 1 },
+      { q: "Human heart mein kitne chambers hote hain?", opts: ["2", "3", "4", "5"], ans: 2 },
+      { q: "Water ka chemical formula kya hai?", opts: ["CO2", "H2O", "O2", "NaCl"], ans: 1 },
+      { q: "Speed of light vacuum mein lagbhag kitni hoti hai?", opts: ["3 × 10^8 m/s", "3 × 10^6 m/s", "1.5 × 10^8 m/s", "3 × 10^5 m/s"], ans: 0 },
+      { q: "Mitochondria ko cell ka kya kaha jata hai?", opts: ["Brain", "Powerhouse", "Kitchen", "Guard"], ans: 1 }
+    ];
+
+    let selectedCourseId = null;
+    let currentFilter = 'all';
+    let currentQ = 0;
+    let userAnswers = new Array(mockQuestions.length).fill(null);
+    let examTimerInt = null;
+    let examSeconds = 600;
+
+    function saveData() {
+      localStorage.setItem('edupro_data', JSON.stringify(appData));
+      renderAll();
+    }
+
+    // Theme Switcher
+    function setTheme(primary, light, dark) {
+      document.documentElement.style.setProperty('--primary', primary);
+      document.documentElement.style.setProperty('--primary-light', light);
+      document.documentElement.style.setProperty('--primary-dark', dark);
+    }
+
+    // Page Navigation
+    function openPage(pageId) {
+      document.querySelectorAll('.app-page').forEach(p => p.classList.add('hidden'));
+      document.getElementById('page-' + pageId).classList.remove('hidden');
+      
+      document.querySelectorAll('.nav-btn').forEach(b => {
+        b.classList.remove('text-theme', 'font-extrabold');
+        b.classList.add('text-slate-500');
+      });
+      const activeNav = document.getElementById('nav-' + pageId);
+      if (activeNav) {
+        activeNav.classList.add('text-theme', 'font-extrabold');
+        activeNav.classList.remove('text-slate-500');
+      }
+      window.scrollTo(0, 0);
+    }
+
+    // Render Everything
+    function renderAll() {
+      document.getElementById('app-title').textContent = appData.name;
+      document.getElementById('app-tagline').textContent = appData.tagline;
+      document.getElementById('admin-inst-name').value = appData.name;
+      document.getElementById('admin-inst-tag').value = appData.tagline;
+
+      // Home Demo List
+      const homeDemo = document.getElementById('home-demo-list');
+      homeDemo.innerHTML = appData.materials.slice(0, 2).map(m => `
+        <div onclick="openMaterial('${m.type}', '${m.link}', '${m.title}')" class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200/80 cursor-pointer hover:border-theme transition">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg ${m.type === 'video' ? 'bg-rose-100 text-rose-600' : 'bg-amber-100 text-amber-600'} flex items-center justify-center text-sm">
+              <i class="fa-solid ${m.type === 'video' ? 'fa-play' : 'fa-file-pdf'}"></i>
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-slate-800">${m.title}</h4>
+              <span class="text-[10px] font-semibold text-slate-400 uppercase">${m.type} • Free Access</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
+        </div>
+      `).join('');
+
+      // Store Grid
+      const storeGrid = document.getElementById('store-courses-grid');
+      storeGrid.innerHTML = appData.courses.map(c => `
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-extrabold bg-theme-light text-theme px-2.5 py-0.5 rounded-full">${c.tag}</span>
+              <span class="text-xs font-black ${c.price === 'FREE' ? 'text-emerald-600' : 'text-slate-900'}">${c.price}</span>
+            </div>
+            <h3 class="text-sm font-extrabold text-slate-900">${c.title}</h3>
+            <p class="text-[11px] text-slate-500 mt-1">Full Syllabus Coverage • Doubt Support • Valid till Exam</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            ${c.enrolled 
+              ? `<button onclick="openPage('batches')" class="w-full py-2.5 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-extrabold"><i class="fa-solid fa-check-circle mr-1"></i> Open Classroom</button>`
+              : `<button onclick="openEnrollModal(${c.id})" class="w-full py-2.5 rounded-xl bg-theme text-white text-xs font-extrabold shadow">Buy / Enroll Now</button>`
+            }
+          </div>
+        </div>
+      `).join('');
+
+      // Classroom Content
+      const clsList = document.getElementById('classroom-content-list');
+      const filtered = currentFilter === 'all' ? appData.materials : appData.materials.filter(m => m.type === currentFilter);
+      clsList.innerHTML = filtered.map(m => `
+        <div onclick="openMaterial('${m.type}', '${m.link}', '${m.title}')" class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between cursor-pointer hover:border-theme transition">
+          <div class="flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl ${m.type === 'video' ? 'bg-blue-50 text-blue-600' : 'bg-rose-50 text-rose-600'} flex items-center justify-center text-lg">
+              <i class="fa-solid ${m.type === 'video' ? 'fa-circle-play' : 'fa-file-pdf'}"></i>
+            </div>
+            <div>
+              <h4 class="text-xs font-extrabold text-slate-900">${m.title}</h4>
+              <p class="text-[11px] text-slate-500 mt-0.5">${m.type === 'video' ? 'Tap to watch HD lecture' : 'Tap to open PDF notes'}</p>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-theme bg-theme-light px-3 py-1.5 rounded-lg">${m.type === 'video' ? 'Watch' : 'Read'}</span>
+        </div>
+      `).join('');
+    }
+
+    // Classroom Filter & Player
+    function filterClassroom(type) {
+      currentFilter = type;
+      ['all', 'video', 'pdf'].forEach(t => {
+        const btn = document.getElementById('cls-' + t);
+        btn.className = t === type ? 'px-3 py-1.5 rounded-lg bg-white text-slate-900 shadow-sm' : 'px-3 py-1.5 rounded-lg text-slate-500';
+      });
+      renderAll();
+    }
+
+    function openMaterial(type, link, title) {
+      openPage('batches');
+      if (type === 'video') {
+        let vidId = link;
+        if (link.includes('v=')) vidId = link.split('v=')[1].split('&')[0];
+        else if (link.includes('youtu.be/')) vidId = link.split('youtu.be/')[1].split('?')[0];
+        document.getElementById('player-title').textContent = title;
+        document.getElementById('youtube-frame').src = `https://www.youtube.com/embed/${vidId}?autoplay=1`;
+        document.getElementById('video-player-box').classList.remove('hidden');
+      } else {
+        window.open(link, '_blank');
+      }
+    }
+
+    function closePlayer() {
+      document.getElementById('youtube-frame').src = '';
+      document.getElementById('video-player-box').classList.add('hidden');
+    }
+
+    // Store Enrollment
+    function openEnrollModal(id) {
+      const course = appData.courses.find(c => c.id === id);
+      selectedCourseId = id;
+      document.getElementById('modal-course-name').textContent = course.title;
+      document.getElementById('modal-course-price').textContent = course.price;
+      document.getElementById('enroll-modal').classList.remove('hidden');
+    }
+    function closeEnrollModal() { document.getElementById('enroll-modal').classList.add('hidden'); }
+    function confirmEnrollment() {
+      const course = appData.courses.find(c => c.id === selectedCourseId);
+      if (course) course.enrolled = true;
+      closeEnrollModal();
+      saveData();
+      alert('🎉 Congratulations! Batch Unlocked Successfully.');
+      openPage('batches');
+    }
+
+    // CBT Mock Test Engine
+    function startMockTest() {
+      currentQ = 0;
+      userAnswers.fill(null);
+      examSeconds = 600;
+      document.getElementById('test-lobby').classList.add('hidden');
+      document.getElementById('test-result').classList.add('hidden');
+      document.getElementById('test-arena').classList.remove('hidden');
+      loadQuestion();
+      clearInterval(examTimerInt);
+      examTimerInt = setInterval(() => {
+        examSeconds--;
+        const m = Math.floor(examSeconds / 60);
+        const s = examSeconds % 60;
+        document.getElementById('exam-timer').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+        if (examSeconds <= 0) submitMockTest();
+      }, 1000);
+    }
+
+    function loadQuestion() {
+      const qObj = mockQuestions[currentQ];
+      document.getElementById('q-number').textContent = `Question ${currentQ + 1} of ${mockQuestions.length}`;
+      document.getElementById('q-text').textContent = qObj.q;
+      document.getElementById('q-options').innerHTML = qObj.opts.map((opt, idx) => `
+        <div onclick="selectOption(${idx})" class="p-3.5 rounded-xl border text-xs font-bold cursor-pointer transition ${userAnswers[currentQ] === idx ? 'bg-theme-light border-theme text-theme' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'}">
+          ${String.fromCharCode(65 + idx)}. ${opt}
+        </div>
+      `).join('');
+    }
+
+    function selectOption(idx) { userAnswers[currentQ] = idx; loadQuestion(); }
+    function nextQuestion() { if (currentQ < mockQuestions.length - 1) { currentQ++; loadQuestion(); } }
+    function prevQuestion() { if (currentQ > 0) { currentQ--; loadQuestion(); } }
+
+    function submitMockTest() {
+      clearInterval(examTimerInt);
+      let correct = 0, wrong = 0;
+      mockQuestions.forEach((q, i) => {
+        if (userAnswers[i] !== null) {
+          if (userAnswers[i] === q.ans) correct++;
+          else wrong++;
+        }
+      });
+      const score = (correct * 4) - (wrong * 1);
+      document.getElementById('res-score').textContent = `${score} / ${mockQuestions.length * 4}`;
+      document.getElementById('res-correct').textContent = correct;
+      document.getElementById('res-wrong').textContent = wrong;
+      document.getElementById('test-arena').classList.add('hidden');
+      document.getElementById('test-result').classList.remove('hidden');
+    }
+
+    function resetTestLobby() {
+      document.getElementById('test-result').classList.add('hidden');
+      document.getElementById('test-lobby').classList.remove('hidden');
+    }
+
+    // Doubt Chat
+    function sendChat() {
+      const inp = document.getElementById('chat-input');
+      const msg = inp.value.trim();
+      if (!msg) return;
+      const box = document.getElementById('chat-messages');
+      box.innerHTML += `<div class="bg-theme text-white p-3 rounded-2xl rounded-tr-none max-w-[80%] ml-auto shadow-sm"><span class="text-[10px] font-bold opacity-80 block mb-0.5">You</span>${msg}</div>`;
+      inp.value = '';
+      box.scrollTop = box.scrollHeight;
+    }
+
+    // Admin Controls
+    function updateBranding() {
+      appData.name = document.getElementById('admin-inst-name').value.trim() || "Sankalp Academy";
+      appData.tagline = document.getElementById('admin-inst-tag').value.trim() || "Learn • Practice • Succeed";
+      saveData();
+      alert('✅ Institute Branding Updated!');
+    }
+
+    function adminAddCourse() {
+      const title = document.getElementById('new-course-title').value.trim();
+      const price = document.getElementById('new-course-price').value.trim() || "FREE";
+      const tag = document.getElementById('new-course-tag').value.trim() || "New Batch";
+      if (!title) return alert('Batch ka naam likhein!');
+      appData.courses.unshift({ id: Date.now(), title, price, tag, enrolled: price.toUpperCase() === 'FREE' });
+      document.getElementById('new-course-title').value = '';
+      document.getElementById('new-course-price').value = '';
+      document.getElementById('new-course-tag').value = '';
+      saveData();
+      alert('✅ New Course Published to Store!');
+    }
+
+    function adminAddMaterial() {
+      const title = document.getElementById('new-mat-title').value.trim();
+      const type = document.getElementById('new-mat-type').value;
+      const link = document.getElementById('new-mat-link').value.trim();
+      if (!title || !link) return alert('Title aur Link dono daalein!');
+      appData.materials.unshift({ id: Date.now(), title, type, link });
+      document.getElementById('new-mat-title').value = '';
+      document.getElementById('new-mat-link').value = '';
+      saveData();
+      alert('✅ Content Published to Classroom!');
+    }
+
+    // Boot App
+    renderAll();
+  </script>
+</body>
+</html>
